@@ -1,6 +1,6 @@
 [project]
 name = "intellex_shared_client"
-version = "0.1.0"
+version = "0.1.1"
 description = "Intellex API Python client (generated from OpenAPI)"
 authors = [
   {name = "Intellex",email = "team@intellex.ai"},
