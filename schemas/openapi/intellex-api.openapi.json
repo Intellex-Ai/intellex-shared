@@ -2974,7 +2974,36 @@
             "$ref": "#/components/schemas/ChatMessage"
           },
           "agentMessage": {
-            "$ref": "#/components/schemas/ChatMessage"
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ChatMessage"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "jobId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Jobid"
+          },
+          "agentMessageId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agentmessageid"
           },
           "plan": {
             "anyOf": [
@@ -2989,8 +3018,7 @@
         },
         "type": "object",
         "required": [
-          "userMessage",
-          "agentMessage"
+          "userMessage"
         ],
         "title": "SendMessageResponse"
       },

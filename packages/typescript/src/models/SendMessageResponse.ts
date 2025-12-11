@@ -45,7 +45,19 @@ export interface SendMessageResponse {
      * @type {ChatMessage}
      * @memberof SendMessageResponse
      */
-    agentMessage: ChatMessage;
+    agentMessage?: ChatMessage | null;
+    /**
+     *
+     * @type {string}
+     * @memberof SendMessageResponse
+     */
+    jobId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof SendMessageResponse
+     */
+    agentMessageId?: string | null;
     /**
      * 
      * @type {ResearchPlan}
@@ -59,7 +71,6 @@ export interface SendMessageResponse {
  */
 export function instanceOfSendMessageResponse(value: object): value is SendMessageResponse {
     if (!('userMessage' in value) || value['userMessage'] === undefined) return false;
-    if (!('agentMessage' in value) || value['agentMessage'] === undefined) return false;
     return true;
 }
 
@@ -74,7 +85,9 @@ export function SendMessageResponseFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'userMessage': ChatMessageFromJSON(json['userMessage']),
-        'agentMessage': ChatMessageFromJSON(json['agentMessage']),
+        'agentMessage': json['agentMessage'] == null ? undefined : ChatMessageFromJSON(json['agentMessage']),
+        'jobId': json['jobId'] == null ? undefined : json['jobId'],
+        'agentMessageId': json['agentMessageId'] == null ? undefined : json['agentMessageId'],
         'plan': json['plan'] == null ? undefined : ResearchPlanFromJSON(json['plan']),
     };
 }
@@ -91,8 +104,9 @@ export function SendMessageResponseToJSONTyped(value?: SendMessageResponse | nul
     return {
         
         'userMessage': ChatMessageToJSON(value['userMessage']),
-        'agentMessage': ChatMessageToJSON(value['agentMessage']),
+        'agentMessage': value['agentMessage'] == null ? undefined : ChatMessageToJSON(value['agentMessage']),
+        'jobId': value['jobId'],
+        'agentMessageId': value['agentMessageId'],
         'plan': ResearchPlanToJSON(value['plan']),
     };
 }
-

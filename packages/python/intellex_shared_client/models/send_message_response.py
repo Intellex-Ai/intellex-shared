@@ -29,9 +29,11 @@ class SendMessageResponse(BaseModel):
     SendMessageResponse
     """ # noqa: E501
     user_message: ChatMessage = Field(alias="userMessage")
-    agent_message: ChatMessage = Field(alias="agentMessage")
+    agent_message: Optional[ChatMessage] = Field(default=None, alias="agentMessage")
+    job_id: Optional[str] = Field(default=None, alias="jobId")
+    agent_message_id: Optional[str] = Field(default=None, alias="agentMessageId")
     plan: Optional[ResearchPlan] = None
-    __properties: ClassVar[List[str]] = ["userMessage", "agentMessage", "plan"]
+    __properties: ClassVar[List[str]] = ["userMessage", "agentMessage", "jobId", "agentMessageId", "plan"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +80,10 @@ class SendMessageResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of agent_message
         if self.agent_message:
             _dict['agentMessage'] = self.agent_message.to_dict()
+        if self.job_id is not None:
+            _dict['jobId'] = self.job_id
+        if self.agent_message_id is not None:
+            _dict['agentMessageId'] = self.agent_message_id
         # override the default output from pydantic by calling `to_dict()` of plan
         if self.plan:
             _dict['plan'] = self.plan.to_dict()
@@ -100,8 +106,9 @@ class SendMessageResponse(BaseModel):
         _obj = cls.model_validate({
             "userMessage": ChatMessage.from_dict(obj["userMessage"]) if obj.get("userMessage") is not None else None,
             "agentMessage": ChatMessage.from_dict(obj["agentMessage"]) if obj.get("agentMessage") is not None else None,
+            "jobId": obj.get("jobId"),
+            "agentMessageId": obj.get("agentMessageId"),
             "plan": ResearchPlan.from_dict(obj["plan"]) if obj.get("plan") is not None else None
         })
         return _obj
-
 
