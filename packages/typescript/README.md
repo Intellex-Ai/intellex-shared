@@ -1,13 +1,13 @@
-# intellex-shared-client@0.0.1-SNAPSHOT.202512112103
+# @intellex/shared-client@0.1.0
 
-A TypeScript SDK client for the localhost API.
+TypeScript SDK client for the Intellex API (generated from OpenAPI).
 
 ## Usage
 
 First, install the SDK from npm.
 
 ```bash
-npm install intellex-shared-client --save
+npm install @intellex/shared-client --save
 ```
 
 Next, try it out.
@@ -17,7 +17,7 @@ Next, try it out.
 import {
   Configuration,
   AuthApi,
-} from 'intellex-shared-client';
+} from '@intellex/shared-client';
 import type { CurrentUserAuthMeGetRequest } from 'intellex-shared-client';
 
 async function example() {

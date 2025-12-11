@@ -1,12 +1,12 @@
 [project]
 name = "intellex_shared_client"
-version = "0.0.1"
-description = "Intellex API"
+version = "0.1.0"
+description = "Intellex API Python client (generated from OpenAPI)"
 authors = [
-  {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
+  {name = "Intellex",email = "team@intellex.ai"},
 ]
 readme = "README.md"
-keywords = ["OpenAPI", "OpenAPI-Generator", "Intellex API"]
+keywords = ["OpenAPI", "Intellex API", "client"]
 requires-python = ">=3.9"
 
 dependencies = [
@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
+Repository = "https://github.com/intellex-ai/intellex-shared"
 
 [tool.poetry]
 requires-poetry = ">=2.0"
