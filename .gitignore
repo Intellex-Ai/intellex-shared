@@ -19,7 +19,26 @@ __pycache__
 .DS_Store
 .env
 .env.*
+.envrc
+.npmrc
+.pypirc
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.jks
+*.keystore
 coverage
 tmp
 .idea
 .vscode
+
+# Allow example/template env files
+!.env.example
+!.env.*.example
+!.env.sample
+!.env.*.sample
+!.env.template
+!.env.*.template
