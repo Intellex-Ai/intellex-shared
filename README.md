@@ -21,6 +21,10 @@ Contracts, schemas, and generated SDKs consumed by `intellex-web`, `intellex-api
 3) Version bump + tag release; publish artifacts (npm/pypi or private registry).
 4) Update `intellex-web`/`intellex-api`/`intellex-orchestrator` to the tagged version.
 
+## Publishing notes (CI)
+- npm publish from GitHub Actions will fail with `EOTP` if your npm account requires 2FA for write actions and the token does not bypass 2FA. When creating the npm token, enable **Bypass two-factor authentication** for write actions (or temporarily set npm 2FA to auth-only).
+- Scoped packages (like `@intellex/shared-client`) require the scope to exist on npm as a **user or organization you control**. If you see `E404 Scope not found`, create the org (or publish under a scope you own, like your npm username).
+
 ## Next actions
 - Add codegen configs (TS/Python) and lock generator versions.
 - Set up a contract check CI job that fails on breaking changes.
